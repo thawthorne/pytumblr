@@ -112,6 +112,7 @@ class TumblrRestClient(object):
 
         :param blogname: a string, the blogname you want to look up posts
                          for. eg: codingjester.tumblr.com
+        :param type: a string, the type of post you want to return
         :param id: an int, the id of the post you are looking for on the blog
         :param tag: a string, the tag you are looking for on posts
         :param limit: an int, the number of results you want
@@ -121,7 +122,7 @@ class TumblrRestClient(object):
         :returns: a dict created from the JSON response
         """
         url = '/v2/blog/%s/posts' % blogname
-        return self.send_api_request("get", url, kwargs, ['id', 'tag', 'limit', 'offset', 'reblog_info', 'notes_info', 'filter', 'api_key'], True)
+        return self.send_api_request("get", url, kwargs, ['id', 'type', 'tag', 'limit', 'offset', 'reblog_info', 'notes_info', 'filter', 'api_key'], True)
     
     @validate_blogname
     def blog_info(self, blogname):
